@@ -284,7 +284,13 @@ function heapShow() {
 // --- begin student code section ----------------------------------------
 // -----------------------------------------------------------------------
 //heap implementation-
-
+/**
+ * inserts a data-item with a key
+ * @author Ansam Ali Bahkali
+ * @implements {heap#insert}
+ * @param {integer} key
+ * @param {object} item
+ */
 
 function heapInsert(key, item) {
     this.size += 1; //increase the size as we're inserting
@@ -293,6 +299,12 @@ function heapInsert(key, item) {
     this.reheapify(); // maintains the heap after the addition
 }
 
+/**
+ * returns  data-item in root
+ * @author Ansam Ali Bahkali
+ * @implements {heap#deleteRoot}
+ * @returns the data-item in root
+ */
 
 function heapDeleteRoot() {
     if (this.isEmpty()) {
@@ -315,12 +327,23 @@ function heapDeleteRoot() {
     return root;
 }
 
-
+/**
+ * return true if heap empty
+ * @type {boolean}
+ * @author Ehsan orabi
+ * @implements {heap#isEmpty}
+ */
 
 function heapisEmpty() {
     return this.size == 0 ? true : false;
 }
-
+/**
+ * makes subtree heap; top-down heapify ("sink") used by .deleteRoot()
+ * used as the heap order may be violated and this fixes the problem
+ *  @implements {heap#heapify}
+ *  @author Ansam Ali Bahkali
+ * @param {integer} key
+ */
 
 function heapheapify(key) {
     //find the largest between the root and children
@@ -350,7 +373,14 @@ function heapheapify(key) {
         this.heapify(large);
     }
 }
-
+/**
+ *  bottom-up reheapify ("swim") used by .insert()
+ *  @implements {heap#reheapify}
+ *  @author Raneem Juhtai
+ * the algorithm exchanges the node’s key K with the larger key of its children and checks whether the
+ * parental dominance holds for K in its new position. This process continues until
+ * the parental dominance for K is satisfied.
+ */
 
 function heapreheapify() {
     var n = this.size;
@@ -392,7 +422,9 @@ function heapreheapify() {
 // -----------------------------------------------------------------------
 // paste your PQ package here (version with calls to heap methods only)
 
-
+/**
+ * @author Raneem Juhtai
+ */
 
 // Basic design decisions and implementation planning (objects & interfaces)
 // initial requirements: to quickly support second Prim's algorithm, 
@@ -404,7 +436,12 @@ function heapreheapify() {
 
 // Impact analysis:
 // since the PQ is implemented based on heap the insert and delete now is O(log n)
-
+/**
+ * Create a priority queue and declare all needed methods
+ *
+ * @author Raneem Juhtai
+ * @constructor
+ */
 
 
 function PQueue() {
@@ -420,7 +457,14 @@ function PQueue() {
 // -----------------------------------------------------------------------
 // Priority queue node constructor (document using JSDOC comments)
 
-
+/**
+ * Create a priority queue node using two input parameters
+ *
+ * @author Raneem Juhtai
+ * @constructor
+ * @param {Object} item
+ * @param {integer} key
+ */
 
 function PQNode(item, key) {
     this.item = item;
@@ -434,13 +478,25 @@ function PQNode(item, key) {
 // specify interface information (JSDOC comments)
 // ....
 
-
+/**
+ * Check if the priority queue is empty or not
+ * @author Thekra sahafi
+ * @implements {PQueue#isEmpty}
+ * @returns {boolean} 'true' if the queue is empty, 'false' otherwise
+ */
 function isEmptyImpl() {
     return this.pq.isEmpty();
 }
 
 //-------------------------------------------------------------------------
 
+
+/**
+ * Delete item with the highest priority.
+ * @author Thekra sahafi
+ * @implements {PQueue#deleteMin}
+ * @returns item has highest priority.
+ */
 
 
 function deleteMinImpl() {
@@ -451,7 +507,14 @@ function deleteMinImpl() {
 
 //-------------------------------------------------------------------------
 
-
+/**
+ * insert/update an item with priority
+ *
+ * @author Thekra sahafi
+ * @implements {PQueue#insert}
+ * @param {object} item
+ * @param {integer} key
+ */
 
 function insertImpl(key, item) {
     return this.pq.insert(key * -1, item);
@@ -596,6 +659,12 @@ function insertAdjacentImpl(v_i, weight) {
 
 // -----------------------------------------------------------------------
 //{FINAL PROJECT} -Functions: {PRIM 1&2 - PQ based on Heap}
+/**
+ returns the minimum spanning tree of a Graph
+   @author Ansam Ali Bahkali
+   @author Ehsan Orabi 
+   @implements {Graph#prim2}
+*/
 
 function primImpl2() {
     if (this.digraph == true) {
@@ -663,6 +732,10 @@ function primImpl2() {
 }
 
 
+/**
+   @author Ehsan Orabi 
+   @implements {Graph#Prim 1}
+*/
 
 function primImpl1() {
     // perform Prim’s Algorithm to find Minimum Spanning tree of the graph
