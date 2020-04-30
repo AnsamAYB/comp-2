@@ -1,4 +1,32 @@
-// CPCS 324 Algorithms & Data Structures 2
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: 12.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: 12.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// CPCS 324 Algorithms &amp; Data Structures 2
 // Graph data structure starter - Final Project
 // 2019, Dr. Muhammad Al-Hashimi
 
@@ -37,12 +65,12 @@ function main_graph() {
     // prim 1
 
     //output the MST
-    document.write("<p>MST by first Prim <br>");
+    document.write("&lt;p>MST by first Prim &lt;br>");
 
     g.Prim_1();
-    for (var i = 0; i < g.MST.length; i++) {
+    for (var i = 0; i &lt; g.MST.length; i++) {
         document.write("(", g.MST[i].v, ",", g.MST[i].u, ")");
-        if (i == g.MST.length - 1) document.write(".<p>");
+        if (i == g.MST.length - 1) document.write(".&lt;p>");
         else document.write(", ");
     }
 
@@ -50,12 +78,12 @@ function main_graph() {
     //Prim 2
 
     //output the MST
-    document.write("<br>MST by Prim2 (PQ-Heap): <br>");
+    document.write("&lt;br>MST by Prim2 (PQ-Heap): &lt;br>");
     g.Prim_2();
-    for (var n = 0; n < g.VT.length; n++) {
+    for (var n = 0; n &lt; g.VT.length; n++) {
         if (g.VT[n].parent != null) {
             document.write("(", g.VT[n].parent, ",", g.VT[n].tree, ")");
-            if (n == g.VT.length - 1) document.write(".<p>");
+            if (n == g.VT.length - 1) document.write(".&lt;p>");
             else document.write(", ");
         } else if (g.VT[n].parent == null) {
             document.write("(-, ", g.VT[n].tree, "), ");
@@ -153,13 +181,13 @@ function make_graphImpl(n, m, w) {
     var mmax = n * (n - 1);
     if (!this.digraph) mmax /= 2;
     if (m > mmax) {
-        document.write("<p>ERROR: invalid number of edges for graph type</p>");
+        document.write("&lt;p>ERROR: invalid number of edges for graph type&lt;/p>");
         return;
     }
 
     // create n vertex in v[] using id 0 to n-1 as label
     var v = [];
-    for (var i = 0; i < n; i++) v[i] = {
+    for (var i = 0; i &lt; n; i++) v[i] = {
         label: i.toString()
     };
 
@@ -174,12 +202,12 @@ function make_graphImpl(n, m, w) {
 
     var h = []; // quick-dirty n x n matrix to check previously generated edges,
     // m-entry hash table would be more efficient
-    for (i = 0; i < n; i++) {
+    for (i = 0; i &lt; n; i++) {
         h[i] = [];
         h[i][i] = 0; // no graph loops; 0 = blocked pair of vertices
     }
 
-    for (i = 0; i < m; i++) {
+    for (i = 0; i &lt; m; i++) {
         // generate vertices u, v randomly
         do {
             var u_i = random(0, n - 1),
@@ -269,12 +297,12 @@ function heapShow() {
     var k = this.h.slice(1, n + 1),
         a = this.h_item.slice(1, n + 1);
     var out =
-        "<h2>Heap (size=" + n + "):</h2><p>Keys: " + k + "<br>Data: " + a + "</p>";
-    for (var i = 1; i <= m; i++) {
-        out += "<p>" + i + ": <b>" + this.h[i] + "(" + this.h_item[i] + ")</b><ul>";
-        if (2 * i <= n) out += "<li>" + this.h[2 * i] + "</li>";
-        if (2 * i + 1 <= n) out += "<li>" + this.h[2 * i + 1] + "</li>";
-        out += "</ul></p>";
+        "&lt;h2>Heap (size=" + n + "):&lt;/h2>&lt;p>Keys: " + k + "&lt;br>Data: " + a + "&lt;/p>";
+    for (var i = 1; i &lt;= m; i++) {
+        out += "&lt;p>" + i + ": &lt;b>" + this.h[i] + "(" + this.h_item[i] + ")&lt;/b>&lt;ul>";
+        if (2 * i &lt;= n) out += "&lt;li>" + this.h[2 * i] + "&lt;/li>";
+        if (2 * i + 1 &lt;= n) out += "&lt;li>" + this.h[2 * i + 1] + "&lt;/li>";
+        out += "&lt;/ul>&lt;/p>";
     }
 
     return out;
@@ -351,12 +379,12 @@ function heapheapify(key) {
     var rightChild = 2 * key + 1; //the right childs index
     var large = key; //considering the parent as the largest
 
-    if (leftChild < this.size && this.h[leftChild] > this.h[large]) {
+    if (leftChild &lt; this.size &amp;&amp; this.h[leftChild] > this.h[large]) {
         large = leftChild;
     } else {
         large = key;
     }
-    if (rightChild < this.size && this.h[rightChild] > this.h[large]) {
+    if (rightChild &lt; this.size &amp;&amp; this.h[rightChild] > this.h[large]) {
         large = rightChild;
     }
     // if a child has a larger value swap
@@ -391,11 +419,11 @@ function heapreheapify() {
         var v = this.h[key];
         var v2 = this.h_item[key];
         var heap = false;
-        while (!heap && 2 * key <= n) {
+        while (!heap &amp;&amp; 2 * key &lt;= n) {
             var j = 2 * key;
-            if (j < n) {
+            if (j &lt; n) {
                 //there are two children
-                if (this.h[j] < this.h[j + 1]) {
+                if (this.h[j] &lt; this.h[j + 1]) {
                     ///////////////////
                     j += 1;
                 }
@@ -426,7 +454,7 @@ function heapreheapify() {
  * @author Raneem Juhtai
  */
 
-// Basic design decisions and implementation planning (objects & interfaces)
+// Basic design decisions and implementation planning (objects &amp; interfaces)
 // initial requirements: to quickly support second Prim's algorithm, 
 // implement minimum priority functionality
 
@@ -531,7 +559,7 @@ function insertImpl(key, item) {
 
 function printGraphImpl() {
     document.write(
-        "<p>GRAPH {",
+        "&lt;p>GRAPH {",
         this.label,
         "} ",
         this.weighted ? "" : "Not ",
@@ -541,7 +569,7 @@ function printGraphImpl() {
         this.nv,
         " VERTICES, ",
         this.ne,
-        " EDGES:</p>"
+        " EDGES:&lt;/p>"
     );
     this.componentInfo();
     this.listVerts();
@@ -553,11 +581,11 @@ function better_input(v, e) {
     this.nv = v.length;
     this.ne = e.length;
 
-    for (var i = 0; i < this.nv; i++) {
+    for (var i = 0; i &lt; this.nv; i++) {
         this.vert[i] = new Vertex(v[i]);
     }
 
-    for (var j = 0; j < this.ne; j++) {
+    for (var j = 0; j &lt; this.ne; j++) {
         this.addEdge(e[j].u, e[j].v, e[j].w);
     }
 
@@ -572,9 +600,9 @@ function better_input(v, e) {
 
 function listVertsImpl() {
     var i;
-    for (i = 0; i < this.nv; i++) {
+    for (i = 0; i &lt; this.nv; i++) {
         document.write(" VERTEX: " + i + " ");
-        document.write(this.vert[i].vertexInfo() + "<br>");
+        document.write(this.vert[i].vertexInfo() + "&lt;br>");
     }
 }
 
@@ -591,11 +619,11 @@ function vertexInfoImpl() {
 
 function componentInfoImpl() {
     if (this.isConnected()) {
-        document.write("CONNECTED<br><br>");
+        document.write("CONNECTED&lt;br>&lt;br>");
     } else if (this.isConnected() == false) {
-        document.write("no connectivity info<br><br>");
+        document.write("no connectivity info&lt;br>&lt;br>");
     } else {
-        document.write("UNCONNECTED<br><br>", this.connectedComp);
+        document.write("UNCONNECTED&lt;br>&lt;br>", this.connectedComp);
     }
 }
 
@@ -624,7 +652,7 @@ function addEdgeImpl(u_i, v_i, weight) {
 function adjacentByIdImpl() {
     adjId = [];
     edgeAdjacent = this.adjacent.traverse();
-    for (i = 0; i < edgeAdjacent.length; i++) {
+    for (i = 0; i &lt; edgeAdjacent.length; i++) {
         adjId[i] = edgeAdjacent[i].target_v;
     }
     return adjId;
@@ -639,7 +667,7 @@ function adjacentByIdImpl() {
 function incidentEdgesImpl() {
     arr = this.adjacent.traverse();
     enodes = [];
-    for (var i = 0; i < arr.length; i++) {
+    for (var i = 0; i &lt; arr.length; i++) {
         enodes[i] = {
             adjVert_i: arr[i].target_v,
             edgeLabel: arr[i].label,
@@ -658,7 +686,7 @@ function insertAdjacentImpl(v_i, weight) {
 }
 
 // -----------------------------------------------------------------------
-//{FINAL PROJECT} -Functions: {PRIM 1&2 - PQ based on Heap}
+//{FINAL PROJECT} -Functions: {PRIM 1&amp;2 - PQ based on Heap}
 /**
  returns the minimum spanning tree of a Graph
    @author Ansam Ali Bahkali
@@ -678,7 +706,7 @@ function primImpl2() {
     this.VT = []; //Initialize VT
     var parent; // penultimate or parent which is the edge connecting v to tree
 
-    for (var i = 0; i < this.nv; i++) {
+    for (var i = 0; i &lt; this.nv; i++) {
         //mark all the vertices as unvisited(visited vertices aren't visited again)
         this.vert[i].visit = false;
     }
@@ -686,7 +714,7 @@ function primImpl2() {
     // we'll be starting with vertex 0  and greedily growing tree
     var edges = this.vert[0].incidentEdges();
 
-    for (i = 0; i < edges.length; i++) {
+    for (i = 0; i &lt; edges.length; i++) {
         Q.insert(edges[i].edgeWeight, edges[i].adjVert_i);
     }
 
@@ -704,7 +732,7 @@ function primImpl2() {
         //parent
         var edges = this.vert[min[1]].incidentEdges();
 
-        for (var i = 0; i < edges.length; i++) {
+        for (var i = 0; i &lt; edges.length; i++) {
             if (this.vert[edges[i].adjVert_i].visit) {
                 if (edges[i].edgeWeight == min[0]) {
                     parent = edges[i].adjVert_i;
@@ -721,7 +749,7 @@ function primImpl2() {
             this.vert[min[1]].visit = true;
 
             //priority queue update
-            for (var i = 0; i < edges.length; i++) {
+            for (var i = 0; i &lt; edges.length; i++) {
                 if (!this.vert[edges[i].adjVert_i].visit) {
                     Q.insert(edges[i].edgeWeight, edges[i].adjVert_i);
                 }
@@ -740,7 +768,7 @@ function primImpl1() {
     var Tree_vertex = [];
 
     // mark all vertices unvisited
-    for (var m = 0; m < this.nv; m++) {
+    for (var m = 0; m &lt; this.nv; m++) {
         this.vert[m].visit = false;
     }
 
@@ -753,16 +781,16 @@ function primImpl1() {
     };
     var min = Infinity; // initial value
 
-    for (var i = 1; i < this.nv; i++) {
-        for (var j = 0; j < Tree_vertex.length; j++) {
+    for (var i = 1; i &lt; this.nv; i++) {
+        for (var j = 0; j &lt; Tree_vertex.length; j++) {
             // get the incident Edge for the vertex in tree
             var incident_Edge = this.vert[Tree_vertex[j]].incidentEdges();
 
-            for (var k = 0; k < incident_Edge.length; k++) {
+            for (var k = 0; k &lt; incident_Edge.length; k++) {
                 // check if the adjacent vertex with minimum weight and ( it is not visited >> not in tree)
                 if (
-                    !this.vert[incident_Edge[k].adjVert_i].visit &&
-                    incident_Edge[k].edgeWeight < min
+                    !this.vert[incident_Edge[k].adjVert_i].visit &amp;&amp;
+                    incident_Edge[k].edgeWeight &lt; min
                 ) {
                     // insert in MST
                     this.MST[i] = {
@@ -786,4 +814,26 @@ function primImpl1() {
 }
 
 // -----------------------------------------------------------------------
-//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="PQNode.html">PQNode</a></li><li><a href="PQueue.html">PQueue</a></li></ul><h3>Global</h3><ul><li><a href="global.html#deleteMinImpl">deleteMinImpl</a></li><li><a href="global.html#heapDeleteRoot">heapDeleteRoot</a></li><li><a href="global.html#heapheapify">heapheapify</a></li><li><a href="global.html#heapInsert">heapInsert</a></li><li><a href="global.html#heapisEmpty">heapisEmpty</a></li><li><a href="global.html#heapreheapify">heapreheapify</a></li><li><a href="global.html#insertImpl">insertImpl</a></li><li><a href="global.html#isEmptyImpl">isEmptyImpl</a></li><li><a href="global.html#primImpl2">primImpl2</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Thu Apr 30 2020 21:30:02 GMT+0300 (Arabian Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
